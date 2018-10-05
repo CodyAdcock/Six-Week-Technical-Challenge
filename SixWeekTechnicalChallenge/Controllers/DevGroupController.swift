@@ -21,6 +21,7 @@ class DevGroupController{
     //Create
     func addPerson(person: String){
         devList.append(person)
+        saveToPersistentStore()
     }
     
     func createGroups(){
@@ -31,7 +32,7 @@ class DevGroupController{
             let newGroup = DevGroup(personOne: devList[index])
             groupList.append(newGroup)
             return
-        }else if devList.count >= 2{
+        }else if devList.count - index >= 2{
             
             let newGroup = DevGroup(personOne: devList[index], personTwo: devList[index+1])
             index += 2
@@ -77,4 +78,11 @@ class DevGroupController{
     
     //DELETE
     
+    func deletePersonFromList(personToDelete: String){
+        guard let index = devList.index(of: personToDelete) else {return}
+        devList.remove(at: index)
+        //deleting wipes groups. Fix later if there is time
+        groupList = []
+        saveToPersistentStore()
+    }
 }

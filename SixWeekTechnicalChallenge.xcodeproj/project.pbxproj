@@ -13,6 +13,7 @@
 		C3C476092167BCD80074FCE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C476072167BCD80074FCE1 /* LaunchScreen.storyboard */; };
 		C3C476132167BE760074FCE1 /* DevGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C476122167BE760074FCE1 /* DevGroup.swift */; };
 		C3C476172167BF910074FCE1 /* DevGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C476162167BF910074FCE1 /* DevGroupController.swift */; };
+		C3C476192167C9320074FCE1 /* DevListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C476182167C9320074FCE1 /* DevListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C3C4760A2167BCD80074FCE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3C476122167BE760074FCE1 /* DevGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevGroup.swift; sourceTree = "<group>"; };
 		C3C476162167BF910074FCE1 /* DevGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevGroupController.swift; sourceTree = "<group>"; };
+		C3C476182167C9320074FCE1 /* DevListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 		C3C476152167BEBD0074FCE1 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C3C476182167C9320074FCE1 /* DevListTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			files = (
 				C3C475FF2167BCD60074FCE1 /* AppDelegate.swift in Sources */,
 				C3C476172167BF910074FCE1 /* DevGroupController.swift in Sources */,
+				C3C476192167C9320074FCE1 /* DevListTableViewController.swift in Sources */,
 				C3C476132167BE760074FCE1 /* DevGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

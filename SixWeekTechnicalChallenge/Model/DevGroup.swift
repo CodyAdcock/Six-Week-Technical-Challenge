@@ -11,9 +11,11 @@ import Foundation
 class DevGroup{
     var personOne: String
     var personTwo: String
+    var people: [String]
     
     init(personOne: String, personTwo: String = ""){
         self.personOne = personOne
         self.personTwo = personTwo
+        self.people = [personOne,personTwo]
     }
 }
