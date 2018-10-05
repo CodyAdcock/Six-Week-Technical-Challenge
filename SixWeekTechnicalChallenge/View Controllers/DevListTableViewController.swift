@@ -20,11 +20,9 @@ class DevListTableViewController: UITableViewController {
     
     func updateViews(){
         //this looks like crap cuz I can't get it to reload the table view after adding a new person.
-        tableView.reloadData()
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-        tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -86,6 +84,7 @@ class DevListTableViewController: UITableViewController {
         let okAction = UIAlertAction(title: "OK", style: .default){(_) in
             guard let person = personNameTextField?.text else {return}
             DevGroupController.shared.addPerson(person: person)
+            self.updateViews()
         }
         //add defined actions
         alertController.addAction(cancelAction)
