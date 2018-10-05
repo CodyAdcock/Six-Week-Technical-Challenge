@@ -19,6 +19,7 @@ class DevListTableViewController: UITableViewController {
     }
     
     func updateViews(){
+        //this looks like crap cuz I can't get it to reload the table view after adding a new person.
         tableView.reloadData()
         DispatchQueue.main.async {
             self.tableView.reloadData()
