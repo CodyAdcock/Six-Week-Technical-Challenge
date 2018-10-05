@@ -36,28 +36,18 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="fQT-fJ-dUE"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="mNG-1e-yqc">
-                        <barButtonItem key="leftBarButtonItem" title="Clear Groups" id="23I-83-g5h">
+                        <barButtonItem key="leftBarButtonItem" title="Shuffle Groups" id="iJ2-xZ-uEV">
                             <connections>
-                                <action selector="clearGroupsButtonTapped:" destination="IGx-y0-uD3" id="Aaa-QK-emJ"/>
+                                <action selector="shuffleButtonTapped:" destination="IGx-y0-uD3" id="aaL-Im-PhF"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem title="Add Person" id="nsk-Jm-gi5">
-                                <connections>
-                                    <action selector="addButtonTapped:" destination="IGx-y0-uD3" id="xBP-Th-tS2"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="| Create Groups |" id="iJ2-xZ-uEV">
-                                <connections>
-                                    <action selector="shuffleButtonTapped:" destination="IGx-y0-uD3" id="aaL-Im-PhF"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Add Person" id="nsk-Jm-gi5">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="IGx-y0-uD3" id="xBP-Th-tS2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="clearGroupsButton" destination="23I-83-g5h" id="AbF-5e-R2L"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hBu-p1-W2r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

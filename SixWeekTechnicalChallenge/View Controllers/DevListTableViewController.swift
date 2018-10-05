@@ -4,7 +4,7 @@
 //
 //  Created by Cody on 10/5/18.
 //  Copyright © 2018 CreakyDoor. All rights reserved.
-//
+//2
 
 import UIKit
 
@@ -14,55 +14,40 @@ class DevListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DevGroupController.shared.createGroups()
         updateViews()
     }
     
     func updateViews(){
+        tableView.reloadData()
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if !DevGroupController.shared.groupList.isEmpty{
             return DevGroupController.shared.groupList.count
-        }else{
-            return 1
-        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        if !DevGroupController.shared.groupList.isEmpty{
-            return "Group \(section + 1)"
-        }else{
-            return "All People"
-        }
+        return "Group \(section + 1)"
         
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !DevGroupController.shared.groupList.isEmpty{
-            return 2
-        }else{
-            return DevGroupController.shared.devList.count
-        }
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath)
-        if !DevGroupController.shared.groupList.isEmpty{
             let group = DevGroupController.shared.groupList[indexPath.section]
             let person = group.people[indexPath.row]
             cell.textLabel?.text = person
             return cell
-        }else{
-            let person = DevGroupController.shared.devList[indexPath.row]
-            cell.textLabel?.text = person
-            return cell
-        }
     }
     
     
@@ -70,15 +55,10 @@ class DevListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            if !DevGroupController.shared.groupList.isEmpty{
                 let group = DevGroupController.shared.groupList[indexPath.section]
                 let person = group.people[indexPath.row]
                 DevGroupController.shared.deletePersonFromList(personToDelete: person)
-            }else{
-                let person = DevGroupController.shared.devList[indexPath.row]
-                DevGroupController.shared.deletePersonFromList(personToDelete: person)
-            }
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            DevGroupController.shared.createGroups()
             updateViews()
         }
     }
@@ -88,11 +68,7 @@ class DevListTableViewController: UITableViewController {
         updateViews()
     }
     @IBAction func shuffleButtonTapped(_ sender: Any) {
-        DevGroupController.shared.createGroups()
-        updateViews()
-    }
-    @IBAction func clearGroupsButtonTapped(_ sender: Any) {
-        DevGroupController.shared.groupList = []
+        DevGroupController.shared.shuffleGroups()
         updateViews()
     }
     
@@ -109,7 +85,6 @@ class DevListTableViewController: UITableViewController {
         let okAction = UIAlertAction(title: "OK", style: .default){(_) in
             guard let person = personNameTextField?.text else {return}
             DevGroupController.shared.addPerson(person: person)
-            self.updateViews()
         }
         //add defined actions
         alertController.addAction(cancelAction)

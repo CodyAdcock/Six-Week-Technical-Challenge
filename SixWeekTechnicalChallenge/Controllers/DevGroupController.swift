@@ -21,14 +21,14 @@ class DevGroupController{
     //Create
     func addPerson(person: String){
         devList.append(person)
+        createGroups()
         saveToPersistentStore()
     }
     
-    func createGroups(){
-        devList.shuffle()
+    func createHelper(){
         if devList.count == 0{
             return
-        }else if devList.count == 1{
+        }else if devList.count - index == 1{
             let newGroup = DevGroup(personOne: devList[index])
             groupList.append(newGroup)
             return
@@ -37,8 +37,39 @@ class DevGroupController{
             let newGroup = DevGroup(personOne: devList[index], personTwo: devList[index+1])
             index += 2
             groupList.append(newGroup)
-            createGroups()
+            createHelper()
         }
+        index = 0
+    }
+    
+    func shuffleHelper(_ shuffledDevList: [String]){
+        
+        print(shuffledDevList)
+        if shuffledDevList.count == 0{
+            return
+        }else if shuffledDevList.count - index == 1{
+            let newGroup = DevGroup(personOne: shuffledDevList[index])
+            groupList.append(newGroup)
+            return
+        }else if shuffledDevList.count - index >= 2{
+            
+            let newGroup = DevGroup(personOne: shuffledDevList[index], personTwo: shuffledDevList[index+1])
+            index += 2
+            groupList.append(newGroup)
+            shuffleHelper(shuffledDevList)
+        }
+        index = 0
+    }
+    
+    func shuffleGroups(){
+        groupList = []
+        let shuffledDevList = devList.shuffled()
+        shuffleHelper(shuffledDevList)
+    }
+    
+    func createGroups(){
+        groupList = []
+        createHelper()
     }
     
     func fileURL() -> URL{
